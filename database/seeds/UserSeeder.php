@@ -15,10 +15,10 @@ class UserSeeder extends Seeder
     public function run()
     {
         //
-        $users = [
-            ['name' => 'admin','email' => 'thuyptd@vn.ids.jp','password' => Hash::make('password')]
-        ];
-        DB::table('users')->insert($users);
+//        $users = [
+//            ['code' => 'THUYPD','name' => 'admin','phone' => '0989310732','email' => 'thuyptd@vn.ids.jp','password' => Hash::make('password')]
+//        ];
+//        DB::table('users')->insert($users);
 
         factory(\App\User::class, 20)->create();
     }

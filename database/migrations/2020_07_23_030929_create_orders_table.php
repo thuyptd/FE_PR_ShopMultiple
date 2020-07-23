@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('customer_name');
             $table->char('customer_phone');
             $table->string('customer_address');
+            $table->char('currency')->default('VND');
             $table->dateTime('date');
             $table->timestamps();
         });
