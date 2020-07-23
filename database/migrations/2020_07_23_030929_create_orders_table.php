@@ -15,11 +15,11 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->char('code')->unique();
+            $table->string('code', 16)->unique();
             $table->string('customer_name');
-            $table->char('customer_phone');
+            $table->string('customer_phone', 13);
             $table->string('customer_address');
-            $table->char('currency')->default('VND');
+            $table->string('currency', 5)->default('VND');
             $table->dateTime('date');
             $table->timestamps();
         });
