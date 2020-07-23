@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCategoryIdUnitIdToProductsTable extends Migration
+class RenameQualityToQuantityInProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,7 @@ class AddCategoryIdUnitIdToProductsTable extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             //
-            $table->integer('category_id')->after('quality')->default(1);
-            $table->integer('unit_id')->after('quality')->nullable();
+            $table->renameColumn('quality','quantity');
         });
     }
 
