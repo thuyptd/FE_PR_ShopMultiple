@@ -27,4 +27,5 @@ Route::get('user/create', 'UserController@create')->name('user.create');
 Route::get('user/{user}', 'UserController@edit')->name('user.edit');
 Route::get('user/{user}', 'UserController@destroy')->name('user.destroy');*/
 Route::resource('products','ProductController');
+Route::resource('brands','BrandController');
 

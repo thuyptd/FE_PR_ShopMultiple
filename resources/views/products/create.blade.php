@@ -28,7 +28,13 @@
             <form action="{{ route('products.store') }}" method="POST">
                 @csrf
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6">
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="form-group">
+                            <strong>Code:</strong>
+                            <input type="text" name="code" class="form-control" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
                         <div class="form-group">
                             <strong>Name:</strong>
                             <input type="text" name="name" class="form-control" placeholder="Name">
@@ -37,13 +43,43 @@
                     <div class="col-xs-12 col-sm-3">
                         <div class="form-group">
                             <strong>Price:</strong>
-                            <input type="number" name="price" class="form-control" placeholder="Price">
+                            <input type="number" name="price" min="0" class="form-control" placeholder="Price">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-3">
                         <div class="form-group">
-                            <strong>Quality:</strong>
+                            <strong>Quantity:</strong>
                             <input type="number" name="quality" min="0" class="form-control" placeholder="Quality" value="0">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="form-group">
+                            <strong>Unit:</strong>
+                            <select name="unit_id" class="form-control">
+                                @foreach($units as $unit)
+                                    <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="form-group">
+                            <strong>Category:</strong>
+                            <select name="category_id" class="form-control">
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->code }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="form-group">
+                            <strong>Brand:</strong>
+                            <select name="brand_id" class="form-control">
+                                @foreach($brands as $brand)
+                                    <option value="{{ $brand->code }}">{{ $brand->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 

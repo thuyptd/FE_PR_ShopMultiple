@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
+use App\Category;
 use App\Product;
+use App\Unit;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -21,6 +24,7 @@ class ProductController extends Controller
     {
         //
         $products = Product::latest()->paginate(10);
+
         return view('products.index', compact('products'))->with('i', (request()->input('page', 1)-1)*5);
     }
 
@@ -32,7 +36,14 @@ class ProductController extends Controller
     public function create()
     {
         //
-        return view('products.create');
+        $units = Unit::all();
+        $categories = Category::all();
+        $brands = Brand::all();
+
+        return view('products.create',[
+            'units' => $units,
+            'categories' => $categories,
+            'brands' => $brands]);
     }
 
     /**
@@ -45,18 +56,22 @@ class ProductController extends Controller
     {
         //
         $request->validate([
+            'code' => 'required',
             'name' => 'required',
-            'detail' => 'required',
+            'price' => 'required',
+            'quantity' => 'required',
+            'unit_id' => 'required',
+            'category_id' => 'required',
         ]);
 
-//        var_dump($request->except(['_token']));die();
-        $product = new Product();
+        /*$product = new Product();
         $product->name = $request->get('name');
         $product->detail = $request->get('detail');
 
-//        $product->save();
+        $product->save();*/
 
         Product::insert($request->except('_token'));
+
         return redirect()->route('products.index')->with('success', 'Product create successfully');
     }
 
@@ -95,8 +110,12 @@ class ProductController extends Controller
     {
         //
         $request->validate([
+            'code' => 'required',
             'name' => 'required',
-            'detail' => 'required'
+            'price' => 'required',
+            'quantity' => 'required',
+            'unit_id' => 'required',
+            'category_id' => 'required',
         ]);
 
         $product->update($request->all());
@@ -114,6 +133,7 @@ class ProductController extends Controller
     {
         //
         $product->delete();
+
         return redirect()->route('products.index')->with('success', 'Product deleted successfully');
     }
 }
