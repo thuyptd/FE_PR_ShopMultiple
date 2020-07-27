@@ -237,16 +237,26 @@ return [
             'topnav' => true,
         ],
         [
-            'text'        => 'User',
+            'text'        => 'Users',
             'url'         => 'users',
             'icon'        => 'far fa-fw fa-user',
-            'label'       => 4,
             'label_color' => 'success',
         ],
         [
-            'text' => 'products',
+            'text'        => 'Members',
+            'url'         => 'members',
+            'icon'        => 'fas fa-fw fa-user-tag',
+            'label_color' => 'success',
+        ],
+        [
+            'text' => 'Products',
             'url'  => 'products',
             'icon' => 'fab fa-fw fa-product-hunt',
+        ],
+        [
+            'text' => 'Brands',
+            'url'  => 'brands',
+            'icon' => 'fas fa-fw fa-copyright',
         ],
         ['header' => 'account_settings'],
         [

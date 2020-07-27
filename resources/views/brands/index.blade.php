@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="float-left">
-                <h2>List of product</h2>
+                <h2>List of brands</h2>
             </div>
         </div>
     </div>
@@ -18,11 +18,10 @@
     <div class="card">
         <div class="card-header">
             <div class="card-tools">
-                <a class="btn btn-outline-success" href="{{ route('products.create') }}"> Create New Product</a>
+                <a class="btn btn-outline-success" href="{{ route('brands.create') }}"> Create New Brand</a>
             </div>
         </div>
         <div class="card-body">
-            <?php $i = 0; ?>
             <table class="table table-bordered table-striped">
                 <colgroup>
                     <col width="50">
@@ -43,17 +42,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($products as $product)
+                <?php $i = 0; ?>
+                @foreach ($brands as $brand)
                     <tr>
                         <td>{{ ++$i }}</td>
-                        <td><a href="{{ route('products.show',$product->id) }}">{{ $product->name }}</a></td>
-                        <td>{{ $product->price }}</td>
-                        <td>{{ $product->detail }}</td>
-                        <td>{{ $product->quality }}</td>
+                        <td><a href="{{ route('brands.show',$brand->id) }}">{{ $brand->name }}</a></td>
+                        <td>{{ $brand->price }}</td>
+                        <td>{{ $brand->detail }}</td>
+                        <td>{{ $brand->quality }}</td>
                         <td>
-                            <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                            <form action="{{ route('brands.destroy',$brand->id) }}" method="POST">
                                 <div class="btn-group-sm">
-                                    <a class="btn btn-outline-secondary" href="{{ route('products.edit',$product->id) }}"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-outline-secondary" href="{{ route('brands.edit',$brand->id) }}"><i class="fa fa-edit"></i></a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
@@ -67,5 +67,4 @@
         </div>
     </div>
 
-    {!! $products->links() !!}
 @endsection
