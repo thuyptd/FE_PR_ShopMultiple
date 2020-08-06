@@ -237,10 +237,13 @@ return [
             'topnav' => true,
         ],
         [
+            'text'        => 'Dashboard',
+            'url'         => '/',
+            'icon'        => 'fas fa-fw fa-tachometer-alt',
+        ],[
             'text'        => 'Users',
             'url'         => 'users',
             'icon'        => 'far fa-fw fa-user',
-            'label_color' => 'success',
         ],
         [
             'text'        => 'Members',

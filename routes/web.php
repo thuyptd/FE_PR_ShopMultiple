@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login','Auth\LoginController@login')->name('login');
+Route::get('/home','Auth\LoginController@login')->name('login');
 
 Route::get('profile','ProfileController@index')->name('profile');
 
 
 Auth::routes();
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController');
 /*Route::get('users', 'UserController@index')->name('users');
 Route::get('user/{user}', 'UserController@show')->name('user.show');
@@ -28,8 +28,4 @@ Route::get('user/{user}', 'UserController@edit')->name('user.edit');
 Route::get('user/{user}', 'UserController@destroy')->name('user.destroy');*/
 Route::resource('products','ProductController');
 Route::resource('brands','BrandController');
-
-Route::get('/admin', function () {
-    return view('admins.index');
-});
 
