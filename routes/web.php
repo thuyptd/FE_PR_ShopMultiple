@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login','Auth\LoginController@login')->name('login');
+Route::get('/home','Auth\LoginController@login')->name('login');
 
 Route::get('profile','ProfileController@index')->name('profile');
 
@@ -28,8 +28,4 @@ Route::get('user/{user}', 'UserController@edit')->name('user.edit');
 Route::get('user/{user}', 'UserController@destroy')->name('user.destroy');*/
 Route::resource('products','ProductController');
 Route::resource('brands','BrandController');
-
-Route::get('/admin', function () {
-    return view('admins.index');
-});
 
